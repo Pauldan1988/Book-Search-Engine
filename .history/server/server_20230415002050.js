@@ -47,4 +47,4 @@ const startApolloServer = async (typeDefs, resolvers) => {
 
 
 
-
+// // if we're in production, serve client/build as static assets
