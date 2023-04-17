@@ -12,11 +12,12 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const server = new ApolloServer({
   typeDefs,
-  resolvers,
+  resolvers
 })
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 
 
 if (process.env.NODE_ENV === 'production') {

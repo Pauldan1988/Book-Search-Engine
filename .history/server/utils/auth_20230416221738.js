@@ -25,7 +25,7 @@ module.exports = {
       req.user = data;
     } catch {
       console.log('Invalid token');
-      return req
+      return res
     }
 
     // send to next endpoint
@@ -44,4 +44,4 @@ module.exports = {
 
 
 
-// .status(400).json({ message: 'invalid token!' });
+.status(400).json({ message: 'invalid token!' });

@@ -64,7 +64,7 @@ const SavedBooks = () => {
                   {book.image ? (
                     <Card.Img
                       src={book.image}
-                      alt={`The cover for ${book.title}`}
+                      alt={The cover for ${book.title}}
                       variant="top"
                     />
                   ) : null}
