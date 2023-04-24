@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Card, Button, Row, Col } from "react-bootstrap";
 
 import { useMutation, useQuery } from "@apollo/client";
-import { GET_QUERY } from "../utils/queries";
+import { GET_ME } from "../utils/queries";
 import { REMOVE_BOOK } from "../utils/mutations";
 
 import Auth from "../utils/auth";
@@ -10,10 +10,10 @@ import { removeBookId } from "../utils/localStorage";
 
 const SavedBooks = () => {
   // Remove Book Mutation
-  const [removeBook, { error }] = useMutation(REMOVE_BOOK);
+  const [removeBook] = useMutation(REMOVE_BOOK);
 
   // Query current user data
-  const { loading, data } = useQuery(GET_QUERY);
+  const { loading, data } = useQuery(GET_ME);
 
   // Check if user data is present else provide empty obj
   //if hook contains a me property it assigns the value of data.me to the userData variable
@@ -28,7 +28,8 @@ const SavedBooks = () => {
     }
 
     try {
-      const { data } = await removeBook({ variables: { bookId: bookId } });
+      const { data } = await removeBook({ variables: { bookId } });
+
 
       // upon success, remove book's id from localStorage
       removeBookId(bookId);
@@ -51,9 +52,9 @@ const SavedBooks = () => {
       <Container>
         <h2 className="pt-5">
           {userData.savedBooks.length
-            ? Viewing ${userData.savedBooks.length} saved ${
-                userData.savedBooks.length === 1 ? "book" : "books"
-              }:
+            ? `Viewing ${userData.savedBooks.length} saved ${
+            userData.savedBooks.length === 1 ? "book" : "books"
+          }:`
             : "You have no saved books!"}
         </h2>
         <Row>
@@ -65,7 +66,7 @@ const SavedBooks = () => {
                     <Card.Img
                       src={book.image}
                       alt={`The cover for ${book.title}`}
-                      variant="top"
+                  variant="top"
                     />
                   ) : null}
                   <Card.Body>
