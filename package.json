@@ -10,13 +10,17 @@
     "build": "cd client && npm run build"
   },
   "engines": {
-    "node": "20.0.0",
-    "npm": "9.6.4"
+    "node": "18.16.0",
+    "npm": "9.6.5"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^5.1.0"
+  },
+  "dependencies": {
+    "node": "^20.0.0",
+    "npm": "^9.6.5"
   }
 }
